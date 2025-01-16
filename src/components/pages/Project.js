@@ -6,6 +6,7 @@ import Container from '../layout/Container'
 import Message from '../layout/Message'
 import FormProject from '../projects/FormProject'
 import ServiceForm from '../service/ServiceForm'
+import {parse, v4 as uuidv4} from 'uuid'
 
 export default function Project() {
     const { id } = useParams()
@@ -26,8 +27,7 @@ export default function Project() {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data)
-                    setProject(data)
+                   setProject(data)
                 })
                 .catch((err) => console.log(err))
         }, 1000)
@@ -70,7 +70,20 @@ export default function Project() {
     }
 
     function createService() {
+        const lastService = project.services[project.services.length - 1] 
 
+        lastService.id = uuidv4()
+
+        const lastServiceCost = lastService.cost
+
+        const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
+        //maximum value validation
+        if(newCost > parseFloat(project.budget)) {
+            setMessage('Orçamento Ultrapassado, verifique o valor do serviço')
+            setType('error')
+            project.services.pop()
+            return false
+        }
     }
 
     return (

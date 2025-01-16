@@ -4,12 +4,16 @@ import SubmitButton from '../form/SubmitButton'
 import Input from '../form/Input'
 
 export default function ServiceForm({handleSubmit, btnText, projectData}) {
-    function submit() {
+    const [service, setService] = useState({})
 
+    function submit(e) {
+        e.preventDefault()
+        projectData.services.push(service)
+        handleSubmit(service)
     }
 
     function handleChange(e) {
-
+        setService({...service, [e.target.name]: e.target.value})
     }
 
     return (
@@ -20,6 +24,7 @@ export default function ServiceForm({handleSubmit, btnText, projectData}) {
                 name='name'
                 placeholder='Insira o nome do serviço'
                 handleOnChange={handleChange}
+                value={service.name || ''}
             />
 
             <Input
@@ -28,6 +33,7 @@ export default function ServiceForm({handleSubmit, btnText, projectData}) {
                 name='cost'
                 placeholder='Insira o valor total'
                 handleOnChange={handleChange}
+                value={service.cost || ''}
             />
 
             <Input
@@ -36,6 +42,7 @@ export default function ServiceForm({handleSubmit, btnText, projectData}) {
                 name='description'
                 placeholder='Descreva o serviço'
                 handleOnChange={handleChange}
+                value={service.description || ''}
             />
 
             <SubmitButton text={btnText} />
