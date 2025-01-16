@@ -5,12 +5,14 @@ import Loading from '../layout/Loading'
 import Container from '../layout/Container'
 import Message from '../layout/Message'
 import FormProject from '../projects/FormProject'
+import ServiceForm from '../service/ServiceForm'
 
 export default function Project() {
     const { id } = useParams()
 
     const [project, setProject] = useState(null)
     const [showProjectForm, setShowProjectForm] = useState(false)
+    const [showServiceForm, setShowServiceForm] = useState(false)
     const [message, setMessage] = useState()
     const [type, setType] = useState()
 
@@ -35,7 +37,14 @@ export default function Project() {
         setShowProjectForm(!showProjectForm)
     }
 
+    function toggleServiceForm() {
+        setShowServiceForm(!showServiceForm)
+    }
+
     function editProject(project) {
+        setMessage('')
+
+
         if(project.budget < project.cost) {
             setMessage('O orçamento não pode ser menor do que o custo do projeto!')
             setType('error')
@@ -58,6 +67,10 @@ export default function Project() {
                 setType('success')
             })
             .catch((err) => console.log(err))
+    }
+
+    function createService() {
+
     }
 
     return (
@@ -94,6 +107,25 @@ export default function Project() {
                             </div>
                         </div>
 
+                        <div className={style.details_container}>
+                               <h2>Adicionar um serviço</h2>
+                               <button className={style.btn} onClick={toggleServiceForm}>
+                                {!showProjectForm ? 'Adicionar Serviço' : 'Fechar'}
+                            </button>
+                            <div className={style.project_info}>
+                                    {showServiceForm && (
+                                        <ServiceForm 
+                                            handleSubmit={createService}
+                                            btnText='Adicionar serviço'
+                                            projectData={project}
+                                        />
+                                    )}
+                            </div>
+                        </div>
+                        <h2>Serviços</h2>
+                        <Container customClass='start'>
+                                    <p>Intens de serviços</p>
+                        </Container>
                     </Container>
                 </div>
             ): (

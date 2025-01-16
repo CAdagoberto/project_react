@@ -3,10 +3,11 @@
   }
   
   .project_details h1,
-  .project_details h2,
-  .project_details p {
-    margin-bottom: 0.5em;
-  }
+.project_details h2,
+.project_details p {
+  margin-bottom: 0.5em;
+}
+
   
   .project_details h1 {
     background-color: #222;
@@ -26,6 +27,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    width: 100%;
   }
   
   .btn {
