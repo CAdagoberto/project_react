@@ -9,7 +9,7 @@ export default function ServiceForm({handleSubmit, btnText, projectData}) {
     function submit(e) {
         e.preventDefault()
         projectData.services.push(service)
-        handleSubmit(service)
+        handleSubmit(projectData)
     }
 
     function handleChange(e) {

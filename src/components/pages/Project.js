@@ -70,6 +70,9 @@ export default function Project() {
     }
 
     function createService() {
+        setMessage('')
+
+        
         const lastService = project.services[project.services.length - 1] 
 
         lastService.id = uuidv4()
@@ -84,6 +87,26 @@ export default function Project() {
             project.services.pop()
             return false
         }
+
+        project.cost = newCost
+
+        fetch(`http://localhost:5000/projects/${project.id}`,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(project)
+        }).then(res => res.json())
+        .then(data => {
+            //exibir services
+
+            //Mensagem
+            setMessage('Serviço Adicionado com sucesso!')
+            setType('success')
+            console.log(data)
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     return (
