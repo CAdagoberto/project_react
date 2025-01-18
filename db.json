@@ -1,17 +1,6 @@
 {
   "projects": [
     {
-      "id": "8e96",
-      "name": "Desenvolvimento site de apostas",
-      "budget": "10000",
-      "category": {
-        "id": "4",
-        "name": "Planejamento"
-      },
-      "cost": 0,
-      "services": []
-    },
-    {
       "id": "3382",
       "name": "Plataforma Advogado",
       "budget": "2500",
@@ -19,26 +8,21 @@
         "id": "3",
         "name": "Design"
       },
-      "cost": 1357,
+      "cost": 0,
       "services": [
-        {
-          "name": "teste",
-          "cost": "1234",
-          "description": "teste",
-          "id": "f056f1d5-76bb-467d-aeef-5f5300b36693"
-        },
         {
           "name": "teste",
           "cost": "123",
           "description": "teste",
           "id": "4500bace-4705-43b7-bbcb-12bebfa3a772"
         }
-      ]
+      ],
+      "service": []
     },
     {
       "id": "5f44",
       "name": "Finalizando Site Advogado",
-      "budget": "1500",
+      "budget": "5000",
       "category": {
         "id": "2",
         "name": "Desenvolvimento"
@@ -56,6 +40,25 @@
       },
       "cost": 0,
       "services": []
+    },
+    {
+      "id": "fe75",
+      "name": "Site de barbearia",
+      "budget": "10000",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": [
+        {
+          "name": "Contratar Designer",
+          "cost": "1000",
+          "description": "Designer UI/UX",
+          "id": "2801fbba-b4fb-4843-b50f-f452656ffbb9"
+        }
+      ],
+      "service": []
     }
   ],
   "categories": [
